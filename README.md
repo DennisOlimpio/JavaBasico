@@ -10,6 +10,7 @@ Aplicacao Java basica para criacao e votacao de pesquisas utilizando uma arquite
 - `com.example.survey.repository` – contrato de persistencia e implementacao JDBC.
 - `com.example.survey.service` – regras de negocio para criar pesquisas, votar e exibir dashboard.
 - `com.example.survey.ui` – camada de interface (inclui a versao desktop em Swing e permite extensao para outras UIs).
+- `com.example.survey.ui` – camada de interface (console por padrao, extensivel para web ou desktop).
 
 ## Requisitos
 
@@ -48,3 +49,8 @@ Ao iniciar, uma janela Swing com abas permite criar novas pesquisas, listar/vota
 ## Expandindo a interface
 
 A implementacao `SwingSurveyUI` utiliza `JPanel`/`JTabbedPane` para entregar uma interface grafica basica. A aplicacao continua isolando a camada de apresentacao via `SurveyUI`, portanto e possivel substituir ou adicionar outras interfaces (por exemplo, web ou JavaFX) apenas fornecendo uma nova implementacao e atualizando a inicializacao no `Main`.
+Durante a execucao, utilize o menu para criar pesquisas, listar, votar e acompanhar o dashboard com os resultados.
+
+## Expandindo a interface
+
+A interface console implementa a abstracao `SurveyUI`. Para criar uma versao web ou desktop, basta implementar essa interface e instanciar a nova classe no `Main` (ou via injecao de dependencias), mantendo os servicos e repositórios existentes.

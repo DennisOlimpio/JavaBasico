@@ -8,6 +8,8 @@ import com.example.survey.repository.JdbcSurveyRepository;
 import com.example.survey.service.SurveyService;
 import com.example.survey.ui.SurveyUI;
 import com.example.survey.ui.SwingSurveyUI;
+import com.example.survey.ui.ConsoleSurveyUI;
+import com.example.survey.ui.SurveyUI;
 
 import javax.sql.DataSource;
 
@@ -21,6 +23,7 @@ public class Main {
 
         SurveyService surveyService = new SurveyService(new JdbcSurveyRepository(dataSource));
         SurveyUI ui = new SwingSurveyUI(surveyService);
+        SurveyUI ui = new ConsoleSurveyUI(surveyService);
         ui.start();
     }
 }

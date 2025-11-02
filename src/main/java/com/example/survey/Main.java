@@ -6,6 +6,8 @@ import com.example.survey.database.DatabaseMigrator;
 import com.example.survey.database.DataSourceProvider;
 import com.example.survey.repository.JdbcSurveyRepository;
 import com.example.survey.service.SurveyService;
+import com.example.survey.ui.SurveyUI;
+import com.example.survey.ui.SwingSurveyUI;
 import com.example.survey.ui.ConsoleSurveyUI;
 import com.example.survey.ui.SurveyUI;
 
@@ -20,6 +22,7 @@ public class Main {
         new DatabaseMigrator().migrate(dataSource);
 
         SurveyService surveyService = new SurveyService(new JdbcSurveyRepository(dataSource));
+        SurveyUI ui = new SwingSurveyUI(surveyService);
         SurveyUI ui = new ConsoleSurveyUI(surveyService);
         ui.start();
     }
